@@ -243,8 +243,9 @@ public class MdiGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
-        //Maestros, Hecho por Nelson Josué Pineda Culajay, 9959-21-10015
-        frmMantenimientoMaestros ventana = new frmMantenimientoMaestros();
+        // TODO add your handling code here:
+        //Maestros, Nelson, modificar
+        frmMantenimientoAplicaciones ventana = new frmMantenimientoAplicaciones();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -283,8 +284,8 @@ public class MdiGeneral extends javax.swing.JFrame {
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-        //Secciones, Carlos Gonzalez, modificar
-        frmMantenimientoAplicaciones ventana = new frmMantenimientoAplicaciones();
+        //Secciones, hecho por Carlos Geovanni González López, 9959-20-6164
+        frmMantenimientoSecciones ventana = new frmMantenimientoSecciones();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -303,8 +304,8 @@ public class MdiGeneral extends javax.swing.JFrame {
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
         // TODO add your handling code here:
-        //Alumnos, Carlos Gonzalez, modificar
-        frmMantenimientoAplicaciones ventana = new frmMantenimientoAplicaciones();
+        //Alumnos, Hecho por Carlos Geovanni González López, 9959-20-6164
+        frmMantenimientoAlumnos ventana = new frmMantenimientoAlumnos();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
@@ -313,8 +314,8 @@ public class MdiGeneral extends javax.swing.JFrame {
 
     private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
         // TODO add your handling code here:
-        //Facultades, Hecho por Nelson Josué Pineda Culajay, 9959-21-10015
-        frmMantenimientoFacultad ventana = new frmMantenimientoFacultad();
+        //Facultades, Nelson Pineda, modificar
+        frmMantenimientoAplicaciones ventana = new frmMantenimientoAplicaciones();
         jDesktopPane1.add(ventana);
         Dimension desktopSize = jDesktopPane1.getSize();
         Dimension FrameSize = ventana.getSize();
