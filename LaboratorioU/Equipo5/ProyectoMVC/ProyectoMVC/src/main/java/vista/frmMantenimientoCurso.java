@@ -31,7 +31,7 @@ public class frmMantenimientoCurso extends javax.swing.JInternalFrame {
 
     public void llenadoDeTablas() {
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Id");
+        modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Estatus");
         clsCursos curso = new  clsCursos();
