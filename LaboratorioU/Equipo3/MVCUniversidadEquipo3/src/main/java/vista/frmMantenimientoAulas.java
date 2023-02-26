@@ -116,7 +116,7 @@ public class frmMantenimientoAulas extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Usuarios");
+        label1.setText("Aulas");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -167,7 +167,7 @@ public class frmMantenimientoAulas extends javax.swing.JInternalFrame {
         txtContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Contraseña");
+        label5.setText("Estatus");
 
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
@@ -212,7 +212,7 @@ public class frmMantenimientoAulas extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtContrasena, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                                     .addComponent(txtNombre))
-                                .addGap(0, 4, Short.MAX_VALUE))
+                                .addGap(0, 14, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(label6)
                                 .addGap(29, 29, 29)
@@ -247,9 +247,9 @@ public class frmMantenimientoAulas extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 575, Short.MAX_VALUE))
+                        .addGap(294, 607, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -327,7 +327,8 @@ public class frmMantenimientoAulas extends javax.swing.JInternalFrame {
         //usuario.setNombreUsuario(txtbuscado.getText());        
         aulas.setCodigoAulas(txtbuscado.getText());        
         aulas = aulas.getBuscarInformacionAulasPorCodigo(aulas);
-        System.out.println("Usuario retornado:" + aulas);        
+        System.out.println("Usuario retornado:" + aulas); 
+        txtCodigo.setText(aulas.getCodigoAulas());
         txtNombre.setText(aulas.getNombreAulas());
         txtContrasena.setText(aulas.getEstatusAulas());
     }//GEN-LAST:event_btnBuscarActionPerformed

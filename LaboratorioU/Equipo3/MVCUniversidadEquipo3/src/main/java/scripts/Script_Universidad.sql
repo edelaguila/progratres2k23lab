@@ -96,3 +96,10 @@ CREATE TABLE jornadas
     estatus_jornada VARCHAR(1),
     PRIMARY KEY (codigo_jornada)
 ) ENGINE=INNODB DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS tbl_usuario (
+	usuid INT NOT NULL AUTO_INCREMENT,
+	usunombre VARCHAR(45) NOT NULL,
+	usucontrasena VARCHAR(25) NOT NULL,
+	PRIMARY KEY (usuid) )
+ENGINE = InnoDB CHARACTER SET = latin1;

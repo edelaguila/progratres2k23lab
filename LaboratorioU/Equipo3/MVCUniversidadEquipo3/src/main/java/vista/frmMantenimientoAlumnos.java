@@ -129,7 +129,7 @@ public class frmMantenimientoAlumnos extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Usuarios");
+        label1.setText("Alumnos");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -305,7 +305,7 @@ public class frmMantenimientoAlumnos extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 581, Short.MAX_VALUE))
+                        .addGap(294, 586, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -400,7 +400,8 @@ public class frmMantenimientoAlumnos extends javax.swing.JInternalFrame {
         //usuario.setNombreUsuario(txtbuscado.getText());        
         alumnos.setCarnetAlumnos(txtbuscado.getText());        
         alumnos = alumnos.getBuscarInformacionAlumnosPorCodigo(alumnos);
-        System.out.println("Alumno retornado:" + alumnos);        
+        System.out.println("Alumno retornado:" + alumnos);   
+        txtCarnet.setText(alumnos.getCarnetAlumnos());
         txtNombre.setText(alumnos.getNombreAlumnos());
         txtDireccion.setText(alumnos.getDireccionAlumnos());
         txtTelefono.setText(alumnos.getTelefonoAlumnos());

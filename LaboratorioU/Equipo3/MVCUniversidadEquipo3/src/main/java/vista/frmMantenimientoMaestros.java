@@ -130,7 +130,7 @@ public class frmMantenimientoMaestros extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Usuarios");
+        label1.setText("Maestros");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -293,7 +293,7 @@ public class frmMantenimientoMaestros extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 585, Short.MAX_VALUE))
+                        .addGap(294, 582, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -389,6 +389,7 @@ public class frmMantenimientoMaestros extends javax.swing.JInternalFrame {
         maestro.setCodMaestro(txtbuscado.getText());        
         maestro = maestro.getBuscarInformacionMaestroPorId(maestro);
         System.out.println("Maestro retornado:" + maestro);  
+        txtCodigo.setText(maestro.getCodMaestro());
         txtNombre.setText(maestro.getNombreMaestro());
         txtDireccion.setText(maestro.getDireccionMaestro());
         txtTelefono.setText(maestro.getTelMaestro());

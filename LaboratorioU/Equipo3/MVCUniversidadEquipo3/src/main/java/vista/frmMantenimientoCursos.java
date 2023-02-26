@@ -116,7 +116,7 @@ public class frmMantenimientoCursos extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Usuarios");
+        label1.setText("Cursos");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +163,7 @@ public class frmMantenimientoCursos extends javax.swing.JInternalFrame {
         txtEstatus.setOpaque(false);
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label5.setText("Contraseña");
+        label5.setText("Estatus");
 
         lb.setForeground(new java.awt.Color(204, 204, 204));
         lb.setText(".");
@@ -243,9 +243,9 @@ public class frmMantenimientoCursos extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 577, Short.MAX_VALUE))
+                        .addGap(294, 597, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -324,6 +324,7 @@ public class frmMantenimientoCursos extends javax.swing.JInternalFrame {
         curso.setCodigoCurso (txtbuscado.getText()) ;       
         curso = curso.getBuscarInformacionCursosPorCodigo(curso);
         System.out.println("Curso retornado:" + curso);  
+        txtCodigo.setText(curso.getCodigoCurso());
         txtNombre.setText(curso.getNombreCurso());
         txtEstatus.setText(curso.getEstatusCurso());
         
