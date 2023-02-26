@@ -89,6 +89,7 @@ CREATE TABLE aulas
   estatus_aula VARCHAR(1),
   PRIMARY KEY (codigo_aula)
 ) ENGINE = InnoDB DEFAULT CHARSET=latin1;
+
 CREATE TABLE jornadas
 (
 	codigo_jornada VARCHAR(5),
