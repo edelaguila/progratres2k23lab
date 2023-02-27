@@ -91,7 +91,7 @@ public class frmMantenimientoFacultad extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Usuarios");
+        setTitle("Mantenimiento Facultades");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -116,7 +116,7 @@ public class frmMantenimientoFacultad extends javax.swing.JInternalFrame {
         });
 
         label1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        label1.setText("Usuarios");
+        label1.setText("Facultades");
 
         btnModificar.setText("Modificar");
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -209,7 +209,7 @@ public class frmMantenimientoFacultad extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(label6)
                                 .addGap(29, 29, 29)
-                                .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)))
+                                .addComponent(txtCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -240,9 +240,9 @@ public class frmMantenimientoFacultad extends javax.swing.JInternalFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(label1)
-                        .addGap(294, 577, Short.MAX_VALUE))
+                        .addGap(294, 571, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 619, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -321,6 +321,7 @@ public class frmMantenimientoFacultad extends javax.swing.JInternalFrame {
         facultad.setCodFacultad(txtbuscado.getText());      
         facultad = facultad.getBuscarInformacionFacultadPorId(facultad);
         System.out.println("Facultad retornado:" + facultad); 
+        txtCodigo.setText(facultad.getCodFacultad());
         txtNombre.setText(facultad.getNombreFacultad());
         txtEstatus.setText(facultad.getEstatusFacultad());
     }//GEN-LAST:event_btnBuscarActionPerformed

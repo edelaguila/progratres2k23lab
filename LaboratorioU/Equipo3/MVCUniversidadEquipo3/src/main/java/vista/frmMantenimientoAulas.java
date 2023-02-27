@@ -91,7 +91,7 @@ public class frmMantenimientoAulas extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Usuarios");
+        setTitle("Mantenimiento Aulas");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
