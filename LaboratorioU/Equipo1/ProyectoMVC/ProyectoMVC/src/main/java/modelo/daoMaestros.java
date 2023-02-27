@@ -1,48 +1,46 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
 
 
-import controlador.clsUsuario;
+import controlador.clsMaestros;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author visitante
+ * @author cdavi
  */
-public class daoUsuario {
+public class daoMaestros {
+    private static final String SQL_SELECT = "SELECT maestrosid, maestrosnombre, maestroscontrasena FROM tbl_maestros";
+    private static final String SQL_INSERT = "INSERT INTO tbl_maestros(maestrosnombre, maestroscontrasena) VALUES(?, ?)";
+    private static final String SQL_UPDATE = "UPDATE tbl_maestros SET maestrosnombre=?, maestroscontrasena=? WHERE maestrosuid = ?";
+    private static final String SQL_DELETE = "DELETE FROM tbl_maestros WHERE maestrosid=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT maestrosid, maestrosnombre, maestroscontrasena FROM tbl_maestros WHERE usunombre = ?";
+    private static final String SQL_SELECT_ID = "SELECT maestrosid, maestrosnombre, maestroscontrasena FROM tbl_maestros WHERE maestrosid = ?";    
 
-    private static final String SQL_SELECT = "SELECT usuid, usunombre, usucontrasena FROM tbl_usuario";
-    private static final String SQL_INSERT = "INSERT INTO tbl_usuario(usunombre, usucontrasena) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE tbl_usuario SET usunombre=?, usucontrasena=? WHERE usuid = ?";
-    private static final String SQL_DELETE = "DELETE FROM tbl_usuario WHERE usuid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT usuid, usunombre, usucontrasena FROM tbl_usuario WHERE usunombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT usuid, usunombre, usucontrasena FROM tbl_usuario WHERE usuid = ?";    
-
-    public List<clsUsuario> consultaUsuarios() {
+    public List<clsMaestros> consultaMaestros() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<clsUsuario> usuarios = new ArrayList<>();
+        List<clsMaestros> maestros = new ArrayList<>();
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("usuid");
-                String nombre = rs.getString("usunombre");
-                String contrasena = rs.getString("usucontrasena");
-                clsUsuario usuario = new clsUsuario();
-                usuario.setIdUsuario(id);
-                usuario.setNombreUsuario(nombre);
-                usuario.setContrasenaUsuario(contrasena);
-                usuarios.add(usuario);
+                int id = rs.getInt("maestrosid");
+                String nombre = rs.getString("maestrosnombre");
+                String contrasena = rs.getString("maestroscontrasena");
+                clsMaestros maestro = new clsMaestros();
+                maestro.setIdMaestro(id);
+                maestro.setNombreMaestro(nombre);
+                maestro.setContrasenaMaestro(contrasena);
+                maestros.add(maestro);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -51,18 +49,18 @@ public class daoUsuario {
             Conexion.close(stmt);
             Conexion.close(conn);
         }
-        return usuarios;
+        return maestros;
     }
 
-    public int ingresaUsuarios(clsUsuario usuario) {
+    public int ingresaMaestros(clsMaestros maestro) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, usuario.getNombreUsuario());
-            stmt.setString(2, usuario.getContrasenaUsuario());
+            stmt.setString(1, maestro.getNombreMaestro());
+            stmt.setString(2, maestro.getContrasenaMaestro());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -77,7 +75,7 @@ public class daoUsuario {
         return rows;
     }
 
-    public int actualizaUsuarios(clsUsuario usuario) {
+    public int actualizaMaestros(clsMaestros maestro) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -85,9 +83,9 @@ public class daoUsuario {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, usuario.getNombreUsuario());
-            stmt.setString(2, usuario.getContrasenaUsuario());
-            stmt.setInt(3, usuario.getIdUsuario());
+            stmt.setString(1, maestro.getNombreMaestro());
+            stmt.setString(2, maestro.getContrasenaMaestro());
+            stmt.setInt(3, maestro.getIdMaestro());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -102,7 +100,7 @@ public class daoUsuario {
         return rows;
     }
 
-    public int borrarUsuarios(clsUsuario usuario) {
+    public int borrarMaestros(clsMaestros maestro) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -111,7 +109,7 @@ public class daoUsuario {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, usuario.getIdUsuario());
+            stmt.setInt(1, maestro.getIdMaestro());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
@@ -124,27 +122,27 @@ public class daoUsuario {
         return rows;
     }
 
-    public clsUsuario consultaUsuariosPorNombre(clsUsuario usuario) {
+    public clsMaestros consultaMaestroPorNombre(clsMaestros maestro) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + usuario);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + maestro);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
-            //stmt.setInt(1, usuario.getIdUsuario());            
-            stmt.setString(1, usuario.getNombreUsuario());
+            //stmt.setInt(1, maestro.getIdMaestros());            
+            stmt.setString(1, maestro.getNombreMaestro());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("usuid");
-                String nombre = rs.getString("usunombre");
-                String contrasena = rs.getString("usucontrasena");
+                int id = rs.getInt("maestrosid");
+                String nombre = rs.getString("maestrosnombre");
+                String contrasena = rs.getString("maestroscontrasena");
 
-                //usuario = new clsUsuario();
-                usuario.setIdUsuario(id);
-                usuario.setNombreUsuario(nombre);
-                usuario.setContrasenaUsuario(contrasena);
-                System.out.println(" registro consultado: " + usuario);                
+                //maestro = new clsMaestros();
+                maestro.setIdMaestro(id);
+                maestro.setNombreMaestro(nombre);
+                maestro.setContrasenaMaestro(contrasena);
+                System.out.println(" registro consultado: " + maestro);                
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
@@ -156,29 +154,29 @@ public class daoUsuario {
         }
 
         //return personas;  // Si se utiliza un ArrayList
-        return usuario;
+        return maestro;
     }
-    public clsUsuario consultaUsuariosPorId(clsUsuario usuario) {
+    public clsMaestros consultaMaestroPorId(clsMaestros maestro) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + usuario);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + maestro);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, usuario.getIdUsuario());            
+            stmt.setInt(1, maestro.getIdMaestro());            
             //stmt.setString(1, usuario.getNombreUsuario());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("usuid");
-                String nombre = rs.getString("usunombre");
-                String contrasena = rs.getString("usucontrasena");
+                int id = rs.getInt("maestrosid");
+                String nombre = rs.getString("maestrosnombre");
+                String contrasena = rs.getString("maestroscontrasena");
 
-                //usuario = new clsUsuario();
-                usuario.setIdUsuario(id);
-                usuario.setNombreUsuario(nombre);
-                usuario.setContrasenaUsuario(contrasena);
-                System.out.println(" registro consultado: " + usuario);                
+                //maestro = new clsMaestros();
+                maestro.setIdMaestro(id);
+                maestro.setNombreMaestro(nombre);
+                maestro.setContrasenaMaestro(contrasena);
+                System.out.println(" registro consultado: " + maestro);                
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
@@ -190,6 +188,6 @@ public class daoUsuario {
         }
 
         //return personas;  // Si se utiliza un ArrayList
-        return usuario;
-    }    
+        return maestro;
+    }
 }
