@@ -28,7 +28,7 @@ public class daoFacultades {
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<clsFacultades> facultades = new ArrayList<>();
+        List<clsFacultades> facultad = new ArrayList<>();
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
@@ -37,11 +37,11 @@ public class daoFacultades {
                 int codigo = rs.getInt("codigo_facultad");
                 String nombre = rs.getString("nombre_facultad");
                 String estatus = rs.getString("estatus_facultad");
-                clsFacultades facultad = new clsFacultades();
-                facultad.setCodigoFacultad(codigo);
-                facultad.setNombreFacultad(nombre);
-                facultad.setEstatusFacultad(estatus);
-                facultades.add(facultad);
+                clsFacultades facultades = new clsFacultades();
+                facultades.setCodigoFacultad(codigo);
+                facultades.setNombreFacultad(nombre);
+                facultades.setEstatusFacultad(estatus);
+                facultad.add(facultades);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -50,7 +50,7 @@ public class daoFacultades {
             Conexion.close(stmt);
             Conexion.close(conn);
         }
-        return facultades;
+        return facultad;
     }
 
     public int ingresaFacultades(clsFacultades facultades) {

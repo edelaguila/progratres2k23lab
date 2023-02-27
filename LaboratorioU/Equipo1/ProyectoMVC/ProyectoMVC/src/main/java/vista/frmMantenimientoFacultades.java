@@ -75,7 +75,7 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaUsuarios = new javax.swing.JTable();
-        txtContrasena = new javax.swing.JTextField();
+        txtEstatus = new javax.swing.JTextField();
         label5 = new javax.swing.JLabel();
         lb = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -155,9 +155,9 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tablaUsuarios);
 
-        txtContrasena.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        txtContrasena.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
+        txtEstatus.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        txtEstatus.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtEstatus.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(204, 204, 204)));
 
         label5.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         label5.setText("Estatus");
@@ -199,7 +199,7 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
                                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lb, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
@@ -249,7 +249,7 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
                                     .addComponent(label3))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(label5)))
                             .addComponent(lb))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -289,7 +289,7 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         clsFacultades facultades = new clsFacultades();
         facultades.setNombreFacultad(txtNombre.getText());
-        facultades.setEstatusFacultad(txtContrasena.getText());
+        facultades.setEstatusFacultad(txtEstatus.getText());
         facultades.setIngresarFacultades(facultades);
         JOptionPane.showMessageDialog(null, "Registro Ingresado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);
@@ -305,7 +305,7 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
         facultades = facultades.getBuscarInformacionFacultadesPorCodigo(facultades);
         System.out.println("Facultad retornada:" + facultades);        
         txtNombre.setText(facultades.getNombreFacultad());
-        txtContrasena.setText(facultades.getEstatusFacultad());
+        txtEstatus.setText(facultades.getEstatusFacultad());
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -313,7 +313,7 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
         clsFacultades facultades = new clsFacultades();
         facultades.setCodigoFacultad(Integer.parseInt(txtbuscado.getText()));
         facultades.setNombreFacultad(txtNombre.getText());
-        facultades.setEstatusFacultad(txtContrasena.getText());
+        facultades.setEstatusFacultad(txtEstatus.getText());
         facultades.setModificarFacultades(facultades);
         JOptionPane.showMessageDialog(null, "Registro Modificado\n", 
                     "Información del Sistema", JOptionPane.INFORMATION_MESSAGE);        
@@ -329,7 +329,7 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
     public void limpiarTextos()
     {
         txtNombre.setText("");
-        txtContrasena.setText("");
+        txtEstatus.setText("");
         txtbuscado.setText("");
     }
     public void habilitarBotones()
@@ -385,7 +385,7 @@ public class frmMantenimientoFacultades extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lb2;
     private javax.swing.JLabel lbusu;
     private javax.swing.JTable tablaUsuarios;
-    private javax.swing.JTextField txtContrasena;
+    private javax.swing.JTextField txtEstatus;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtbuscado;
     // End of variables declaration//GEN-END:variables
