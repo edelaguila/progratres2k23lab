@@ -53,7 +53,11 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Mantenimiento Sedes"/>
+ 
+                    <Property name="text" type="java.lang.String" value="Mantenimiento Facultades"/>
+
+                   
+
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
@@ -61,20 +65,17 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Mantenimiento Alummnos"/>
+
+                    <Property name="text" type="java.lang.String" value="Mantenimiento Carreras"/>
+
+                    
+
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
                   </Events>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem6">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Mantenimiento Maestros"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem6ActionPerformed"/>
-                  </Events>
-                </MenuItem>
+
               </SubComponents>
             </Menu>
           </SubComponents>

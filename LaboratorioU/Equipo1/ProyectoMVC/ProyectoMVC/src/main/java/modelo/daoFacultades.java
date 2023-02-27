@@ -5,8 +5,7 @@
  */
 package modelo;
 
-
-import controlador.clsUsuario;
+import controlador.clsFacultades;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,34 +14,34 @@ import java.util.List;
  *
  * @author visitante
  */
-public class daoUsuario {
+public class daoFacultades {
 
-    private static final String SQL_SELECT = "SELECT usuid, usunombre, usucontrasena FROM siu.tbl_alumnos";
-    private static final String SQL_INSERT = "INSERT INTO siu.tbl_alumnos(usunombre, usucontrasena) VALUES(?, ?)";
-    private static final String SQL_UPDATE = "UPDATE siu.tbl_alumnos SET usunombre=?, usucontrasena=? WHERE usuid = ?";
-    private static final String SQL_DELETE = "DELETE FROM siu.tbl_alumnos WHERE usuid=?";
-    private static final String SQL_SELECT_NOMBRE = "SELECT usuid, usunombre, usucontrasena FROM siu.tbl_alumnos WHERE usunombre = ?";
-    private static final String SQL_SELECT_ID = "SELECT usuid, usunombre, usucontrasena FROM siu.tbl_alumnos WHERE usuid = ?";    
+    private static final String SQL_SELECT = "SELECT codigo_facultad, nombre_facultad, estatus_facultad FROM siu.facultades";
+    private static final String SQL_INSERT = "INSERT INTO siu.facultades(nombre_facultad, estatus_facultad) VALUES(?, ?)";
+    private static final String SQL_UPDATE = "UPDATE siu.facultades SET nombre_facultad=?, estatus_facultad=? WHERE codigo_facultad = ?";
+    private static final String SQL_DELETE = "DELETE FROM siu.facultades WHERE codigo_facultad=?";
+    private static final String SQL_SELECT_NOMBRE = "SELECT codigo_facultad, nombre_facultad, estatus_facultad FROM siu.facultades WHERE nombre_facultad = ?";
+    private static final String SQL_SELECT_ID = "SELECT codigo_facultad, nombre_facultad, estatus_facultad FROM siu.facultades WHERE codigo_facultad = ?";    
 
-    public List<clsUsuario> consultaUsuarios() {
+    public List<clsFacultades> consultaFacultades() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         
-        List<clsUsuario> usuarios = new ArrayList<>();
+        List<clsFacultades> facultad = new ArrayList<>();
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("usuid");
-                String nombre = rs.getString("usunombre");
-                String contrasena = rs.getString("usucontrasena");
-                clsUsuario usuario = new clsUsuario();
-                usuario.setIdUsuario(id);
-                usuario.setNombreUsuario(nombre);
-                usuario.setContrasenaUsuario(contrasena);
-                usuarios.add(usuario);
+                int codigo = rs.getInt("codigo_facultad");
+                String nombre = rs.getString("nombre_facultad");
+                String estatus = rs.getString("estatus_facultad");
+                clsFacultades facultades = new clsFacultades();
+                facultades.setCodigoFacultad(codigo);
+                facultades.setNombreFacultad(nombre);
+                facultades.setEstatusFacultad(estatus);
+                facultad.add(facultades);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -51,18 +50,18 @@ public class daoUsuario {
             Conexion.close(stmt);
             Conexion.close(conn);
         }
-        return usuarios;
+        return facultad;
     }
 
-    public int ingresaUsuarios(clsUsuario usuario) {
+    public int ingresaFacultades(clsFacultades facultades) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, usuario.getNombreUsuario());
-            stmt.setString(2, usuario.getContrasenaUsuario());
+            stmt.setString(1, facultades.getNombreFacultad());
+            stmt.setString(2, facultades.getEstatusFacultad());
 
             System.out.println("ejecutando query:" + SQL_INSERT);
             rows = stmt.executeUpdate();
@@ -77,7 +76,7 @@ public class daoUsuario {
         return rows;
     }
 
-    public int actualizaUsuarios(clsUsuario usuario) {
+    public int actualizaFacultades(clsFacultades facultades) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -85,9 +84,9 @@ public class daoUsuario {
             conn = Conexion.getConnection();
             System.out.println("ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, usuario.getNombreUsuario());
-            stmt.setString(2, usuario.getContrasenaUsuario());
-            stmt.setInt(3, usuario.getIdUsuario());
+            stmt.setString(1, facultades.getNombreFacultad());
+            stmt.setString(2, facultades.getEstatusFacultad());
+            stmt.setInt(3, facultades.getCodigoFacultad());
 
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizado:" + rows);
@@ -102,7 +101,7 @@ public class daoUsuario {
         return rows;
     }
 
-    public int borrarUsuarios(clsUsuario usuario) {
+    public int borrarFacultades(clsFacultades facultades) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -111,7 +110,7 @@ public class daoUsuario {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query:" + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setInt(1, usuario.getIdUsuario());
+            stmt.setInt(1, facultades.getCodigoFacultad());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados:" + rows);
         } catch (SQLException ex) {
@@ -124,27 +123,27 @@ public class daoUsuario {
         return rows;
     }
 
-    public clsUsuario consultaUsuariosPorNombre(clsUsuario usuario) {
+    public clsFacultades consultaFacultadesPorNombre(clsFacultades facultades) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + usuario);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + facultades);
             stmt = conn.prepareStatement(SQL_SELECT_NOMBRE);
-            //stmt.setInt(1, usuario.getIdUsuario());            
-            stmt.setString(1, usuario.getNombreUsuario());
+            //stmt.setInt(1, facultades.getCodigoFacultad());            
+            stmt.setString(1, facultades.getNombreFacultad());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("usuid");
-                String nombre = rs.getString("usunombre");
-                String contrasena = rs.getString("usucontrasena");
+                int codigo = rs.getInt("codigo_facultad");
+                String nombre = rs.getString("nombre_facultad");
+                String estatus = rs.getString("estatus_facultad");
 
-                //usuario = new clsUsuario();
-                usuario.setIdUsuario(id);
-                usuario.setNombreUsuario(nombre);
-                usuario.setContrasenaUsuario(contrasena);
-                System.out.println(" registro consultado: " + usuario);                
+                //facultades = new clsFacultades();
+                facultades.setCodigoFacultad(codigo);
+                facultades.setNombreFacultad(nombre);
+                facultades.setEstatusFacultad(estatus);
+                System.out.println(" registro consultado: " + facultades);                
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
@@ -156,29 +155,29 @@ public class daoUsuario {
         }
 
         //return personas;  // Si se utiliza un ArrayList
-        return usuario;
+        return facultades;
     }
-    public clsUsuario consultaUsuariosPorId(clsUsuario usuario) {
+    public clsFacultades consultaFacultadesPorCodigo(clsFacultades facultades) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
         try {
             conn = Conexion.getConnection();
-            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + usuario);
+            System.out.println("Ejecutando query:" + SQL_SELECT_NOMBRE + " objeto recibido: " + facultades);
             stmt = conn.prepareStatement(SQL_SELECT_ID);
-            stmt.setInt(1, usuario.getIdUsuario());            
-            //stmt.setString(1, usuario.getNombreUsuario());
+            stmt.setInt(1, facultades.getCodigoFacultad());            
+            //stmt.setString(1, facultades.getNombreFacultad());
             rs = stmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("usuid");
-                String nombre = rs.getString("usunombre");
-                String contrasena = rs.getString("usucontrasena");
+                int codigo = rs.getInt("codigo_facultad");
+                String nombre = rs.getString("nombre_facultad");
+                String estatus = rs.getString("estatus_facultad");
 
-                //usuario = new clsUsuario();
-                usuario.setIdUsuario(id);
-                usuario.setNombreUsuario(nombre);
-                usuario.setContrasenaUsuario(contrasena);
-                System.out.println(" registro consultado: " + usuario);                
+                //facultades = new clsFacultades();
+                facultades.setCodigoFacultad(codigo);
+                facultades.setNombreFacultad(nombre);
+                facultades.setEstatusFacultad(estatus);
+                System.out.println(" registro consultado: " + estatus);                
             }
             //System.out.println("Registros buscado:" + persona);
         } catch (SQLException ex) {
@@ -190,6 +189,6 @@ public class daoUsuario {
         }
 
         //return personas;  // Si se utiliza un ArrayList
-        return usuario;
+        return facultades;
     }    
 }
